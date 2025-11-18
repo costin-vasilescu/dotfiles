@@ -8,7 +8,7 @@ return {
           ignored = true,
         },
         files = {
-          hidden = true,
+          hidden = false,
           ignored = false,
         },
       },
