@@ -5,21 +5,30 @@
 source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 # ============================================================================
-# Greeting
+# Fish
 # ============================================================================
 function fish_greeting
     # Empty function - no greeting message or fastfetch on terminal start
 end
 
+set -g fish_key_bindings fish_vi_key_bindings
+
+# ============================================================================
+# Functions
+# ============================================================================
+function mkcd
+    mkdir -p $argv[1] && cd $argv[1]
+end
+
+function last_history_item
+    echo $history[1]
+end
+abbr -a !! --position anywhere --function last_history_item
+
 # ============================================================================
 # Prompt
 # ============================================================================
 starship init fish | source
-
-# ============================================================================
-# Key Bindings
-# ============================================================================
-set -g fish_key_bindings fish_vi_key_bindings
 
 # ============================================================================
 # External Tools
@@ -39,5 +48,6 @@ set -x NVIM_APPNAME lazyvim
 # ============================================================================
 alias cat='bat'
 alias vim='nvim'
+alias ghget='curl -LO'
 alias dfgit='git --git-dir=$HOME/.dotfilesgit/ --work-tree=$HOME'
 alias uvml='source ~/.venvs/ml/bin/activate.fish'
