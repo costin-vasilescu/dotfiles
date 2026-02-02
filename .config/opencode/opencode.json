@@ -24,5 +24,8 @@
     "webfetch": "allow",
     "websearch": "allow",
     "codesearch": "allow"
-  }
+  },
+  "disabled_providers": [
+    "azure"
+  ]
 }
