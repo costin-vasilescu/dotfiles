@@ -1,0 +1,7 @@
+[tools]
+direnv = "latest"
+node = "latest"
+opencode = "latest"
+rust = "latest"
+tree-sitter = "latest"
+uv = "latest"
