@@ -11,6 +11,11 @@ function fish_greeting
     # Empty function - no greeting message or fastfetch on terminal start
 end
 
+if status is-interactive
+    starship init fish | source
+    atuin init fish | source
+end
+
 set -g fish_key_bindings fish_vi_key_bindings
 
 # ============================================================================
@@ -26,17 +31,11 @@ end
 abbr -a !! --position anywhere --function last_history_item
 
 # ============================================================================
-# Prompt
+# CLI Tools
 # ============================================================================
-starship init fish | source
-
-# ============================================================================
-# External Tools
-# ============================================================================
-# Autojump - fast directory navigation
 [ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
-# Mise - polyglot runtime manager
 eval "$(mise activate fish)"
+direnv hook fish | source
 
 # ============================================================================
 # Environment Variables
@@ -48,6 +47,7 @@ set -x NVIM_APPNAME lazyvim
 # ============================================================================
 alias cat='bat'
 alias vim='nvim'
+alias pip='uv pip'
 alias ghget='curl -LO'
 alias dfgit='git --git-dir=$HOME/.dotfilesgit/ --work-tree=$HOME'
 alias uvml='source ~/.venvs/ml/bin/activate.fish'
