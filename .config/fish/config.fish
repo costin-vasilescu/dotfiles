@@ -12,7 +12,7 @@ function fish_greeting
 end
 
 if status is-interactive
-    starship init fish | source
+    [ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
     atuin init fish | source
 end
 
@@ -33,8 +33,8 @@ abbr -a !! --position anywhere --function last_history_item
 # ============================================================================
 # CLI Tools
 # ============================================================================
-[ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
 eval "$(mise activate fish)"
+starship init fish | source
 direnv hook fish | source
 
 # ============================================================================
