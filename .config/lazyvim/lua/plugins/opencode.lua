@@ -21,7 +21,7 @@ return {
       mode = { "n", "x" },
     },
     {
-      "<C-\\`>",
+      "<C-\\>",
       function()
         require("opencode").toggle()
       end,
