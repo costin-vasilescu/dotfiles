@@ -12,7 +12,6 @@ function fish_greeting
 end
 
 if status is-interactive
-    [ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
     atuin init fish | source
 end
 
@@ -36,6 +35,7 @@ abbr -a !! --position anywhere --function last_history_item
 eval "$(mise activate fish)"
 starship init fish | source
 direnv hook fish | source
+zoxide init --cmd j fish | source
 
 # ============================================================================
 # Environment Variables
