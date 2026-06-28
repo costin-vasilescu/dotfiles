@@ -42,6 +42,11 @@ zoxide init --cmd j fish | source
 # ============================================================================
 set -x NVIM_APPNAME lazyvim
 
+# Load secret environment variables
+if test -f ~/.config/fish/.env.fish
+    source ~/.config/fish/.env.fish
+end
+
 # ============================================================================
 # Aliases
 # ============================================================================
