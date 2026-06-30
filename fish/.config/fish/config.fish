@@ -27,12 +27,11 @@ end
 function last_history_item
     echo $history[1]
 end
-abbr -a !! --position anywhere --function last_history_item
 
 # ============================================================================
 # CLI Tools
 # ============================================================================
-eval "$(mise activate fish)"
+mise activate fish | source
 starship init fish | source
 direnv hook fish | source
 zoxide init --cmd j fish | source
@@ -47,6 +46,13 @@ if test -f ~/.config/fish/.env.fish
     source ~/.config/fish/.env.fish
 end
 
+
+# ============================================================================
+# Abbreviations
+# ============================================================================
+abbr -a !! --position anywhere --function last_history_item
+
+
 # ============================================================================
 # Aliases
 # ============================================================================
@@ -54,5 +60,3 @@ alias cat='bat'
 alias vim='nvim'
 alias pip='uv pip'
 alias ghget='curl -LO'
-alias dfgit='git --git-dir=$HOME/.dotfilesgit/ --work-tree=$HOME'
-alias uvml='source ~/.venvs/ml/bin/activate.fish'
