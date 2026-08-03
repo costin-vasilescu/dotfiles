@@ -8,8 +8,8 @@ return {
           ignored = true,
         },
         files = {
-          hidden = false,
-          ignored = false,
+          hidden = true,
+          ignored = true,
         },
       },
     },
