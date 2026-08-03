@@ -11,6 +11,10 @@ return {
 					hidden = true,
 					ignored = false,
 				},
+				grep = {
+					hidden = true,
+					ignored = false,
+				},
 			},
 		},
 	},
