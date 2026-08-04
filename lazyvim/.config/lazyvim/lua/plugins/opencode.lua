@@ -18,7 +18,13 @@ return {
 	{
 		"sudo-tee/opencode.nvim",
 		config = function()
-			require("opencode").setup({})
+			require("opencode").setup({
+				default_mode = "ask",
+				quick_chat = {
+					-- default_model = "", -- fast model for quick single-line/selection edits
+					default_agent = "build",
+				},
+			})
 		end,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
