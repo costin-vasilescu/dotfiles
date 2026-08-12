@@ -1,13 +1,5 @@
 return {
   {
-    "folke/which-key.nvim",
-    opts = {
-      spec = {
-        { "<leader>r", group = "run" },
-      },
-    },
-  },
-  {
     "michaelb/sniprun",
     build = "sh install.sh 1",
     opts = {
