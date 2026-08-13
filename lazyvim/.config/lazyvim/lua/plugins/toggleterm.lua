@@ -28,7 +28,7 @@ return {
 				pattern = "term://*toggleterm#*",
 				callback = function(event)
 					local map_opts = { buffer = event.buf }
-					vim.keymap.set("t", "<C-q>", [[<C-\><C-n>]], map_opts)
+					vim.keymap.set("t", "<S-Esc>", [[<C-\><C-n>]], map_opts)
 					vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], map_opts)
 					vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], map_opts)
 					vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], map_opts)

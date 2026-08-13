@@ -4,14 +4,14 @@
 
 -- Toggle LSP
 vim.keymap.set("n", "<leader>cL", function()
-  local clients = vim.lsp.get_clients({ bufnr = 0 })
-  if #clients > 0 then
-    vim.cmd("LspStop")
-    vim.notify("LSP stopped", vim.log.levels.INFO)
-  else
-    vim.cmd("LspStart")
-    vim.notify("LSP started", vim.log.levels.INFO)
-  end
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
+	if #clients > 0 then
+		vim.cmd("LspStop")
+		vim.notify("LSP stopped", vim.log.levels.INFO)
+	else
+		vim.cmd("LspStart")
+		vim.notify("LSP started", vim.log.levels.INFO)
+	end
 end, { desc = "Toggle LSP" })
 
 -- Disable Snacks floating terminal keymaps
@@ -21,5 +21,5 @@ vim.keymap.del({ "n", "t" }, "<c-/>")
 vim.keymap.del({ "n", "t" }, "<c-_>")
 
 -- Enable Toggleterm floating and tab terminals
-vim.keymap.set({ "n", "t" }, "<c-_>", "<cmd>1ToggleTerm direction=float<cr>", { desc = "Toggle Terminal (Float)" })
-vim.keymap.set({"n", "t" }, "<c-\\>", "<cmd>2ToggleTerm direction=tab<cr>", { desc = "Toggle Terminal (Tab)" })
+vim.keymap.set({ "n", "t" }, "<c-/>", "<cmd>1ToggleTerm direction=float<cr>", { desc = "Toggle Terminal (Float)" })
+vim.keymap.set({ "n", "t" }, "<c-\\>", "<cmd>2ToggleTerm direction=tab<cr>", { desc = "Toggle Terminal (Tab)" })
