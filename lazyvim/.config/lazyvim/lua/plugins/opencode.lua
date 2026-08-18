@@ -24,6 +24,10 @@ return {
 					-- default_model = "", -- fast model for quick single-line/selection edits
 					default_agent = "build",
 				},
+				context = {
+					current_file = { enabled = false },
+					diagnostics = { enabled = false },
+				},
 			})
 		end,
 		dependencies = {
