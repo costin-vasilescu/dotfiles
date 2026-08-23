@@ -12,6 +12,51 @@ return {
 		lazy = true,
 	},
 	{
+		"nvim-lualine/lualine.nvim",
+		opts = {
+			sections = {
+				lualine_x = {
+					{
+						"triforce",
+						currency = {
+							enabled = false,
+						},
+						level = {
+							enabled = true,
+							prefix = "Lv.",
+							show = {
+								level = true,
+								bar = true,
+								percent = false,
+								xp = false,
+							},
+							bar = {
+								length = 8,
+								chars = { filled = "█", empty = "░" },
+							},
+						},
+						achievements = {
+							enabled = false,
+							icon = "",
+							show_count = true,
+						},
+						streak = {
+							enabled = false,
+							icon = "",
+							show_days = true,
+						},
+						session_time = {
+							enabled = true,
+							icon = "",
+							show_duration = true,
+							format = "short",
+						},
+					},
+				},
+			},
+		},
+	},
+	{
 		"gisketch/triforce.nvim",
 		dependencies = { "nvzone/volt" },
 		keys = {
@@ -24,37 +69,39 @@ return {
 			},
 		},
 		opts = {
+			items = { enabled = false },
+			override_levels = false,
 			levels = {
-				[1] = { title = "Dirt Hut Architect", icon = "🌱" }, -- Minecraft
-				[5] = { title = "Third-Rate Duelist", icon = "🃏" }, -- Yu-Gi-Oh!
-				[10] = { title = "Hearthian Hatchling", icon = "🏕️" }, -- Outer Wilds
-				[20] = { title = "Drowners Bane", icon = "🌊" }, -- The Witcher
-				[30] = { title = "Mudcrab Brawler", icon = "🦀" }, -- Elder Scrolls
-				[40] = { title = "Wall of Flesh Destroyer", icon = "🥩" }, -- Terraria
-				[50] = { title = "Thieves Guild Master", icon = "🗝️" }, -- Elder Scrolls
-				[60] = { title = "Obelisk Blue Elite", icon = "🔵" }, -- Yu-Gi-Oh!
-				[70] = { title = "Nomai Translator", icon = "📜" }, -- Outer Wilds
-				[80] = { title = "Legendary Duelist", icon = "⚔️" }, -- Yu-Gi-Oh!
-				[90] = { title = "Child of the Elder Blood", icon = "✨" }, -- The Witcher
-				[100] = { title = "Dragonborn", icon = "🐉" }, -- Elder Scrolls
-				[110] = { title = "Ender Dragon Slayer", icon = "🐉" }, -- Minecraft
-				[120] = { title = "Dark Brotherhood Listener", icon = "🗡️" }, -- Elder Scrolls
-				[135] = { title = "Mechanical Boss Slayer", icon = "🤖" }, -- Terraria
-				[150] = { title = "Butcher of Blaviken", icon = "🩸" }, -- The Witcher
-				[165] = { title = "King of Games", icon = "👑" }, -- Yu-Gi-Oh!
-				[180] = { title = "Lord of Frenzied Flame", icon = "🔥" }, -- Elden Ring
-				[200] = { title = "Quantum Observer", icon = "⚛️" }, -- Outer Wilds
-				[210] = { title = "Moon Lord Vanquisher", icon = "🦑" }, -- Terraria
-				[225] = { title = "Elden Lord", icon = "🟡" }, -- Elden Ring
-				[240] = { title = "Hardcore Legend", icon = "🖤" }, -- Minecraft
-				[250] = { title = "Master of the Millennium Items", icon = "👁️" }, -- Yu-Gi-Oh!
-				[260] = { title = "White Wolf of Rivia", icon = "🐺" }, -- The Witcher
-				[270] = { title = "Eye of the Universe Explorer", icon = "🌌" }, -- Outer Wilds
-				[280] = { title = "Nerevarine", icon = "💍" }, -- Elder Scrolls
-				[285] = { title = "Empress of Light Conqueror", icon = "🦋" }, -- Terraria
-				[290] = { title = "Zenith Forger", icon = "⚔️" }, -- Terraria
-				[295] = { title = "Pharaoh Nameless", icon = "🏺" }, -- Yu-Gi-Oh!
-				[300] = { title = "CHIM Attainer", icon = "🌀" }, -- Elder Scrolls
+				{ level = 1, title = "Dirt Hut Architect", icon = "🌱" }, -- Minecraft
+				{ level = 5, title = "Third-Rate Duelist", icon = "🃏" }, -- Yu-Gi-Oh!
+				{ level = 10, title = "Hearthian Hatchling", icon = "🏕️" }, -- Outer Wilds
+				{ level = 20, title = "Drowners Bane", icon = "🌊" }, -- The Witcher
+				{ level = 30, title = "Mudcrab Brawler", icon = "🦀" }, -- Elder Scrolls
+				{ level = 40, title = "Wall of Flesh Destroyer", icon = "🥩" }, -- Terraria
+				{ level = 50, title = "Thieves Guild Master", icon = "🗝️" }, -- Elder Scrolls
+				{ level = 60, title = "Obelisk Blue Elite", icon = "🔵" }, -- Yu-Gi-Oh!
+				{ level = 70, title = "Nomai Translator", icon = "📜" }, -- Outer Wilds
+				{ level = 80, title = "Legendary Duelist", icon = "⚔️" }, -- Yu-Gi-Oh!
+				{ level = 90, title = "Child of the Elder Blood", icon = "✨" }, -- The Witcher
+				{ level = 100, title = "Dragonborn", icon = "🐉" }, -- Elder Scrolls
+				{ level = 110, title = "Ender Dragon Slayer", icon = "🐉" }, -- Minecraft
+				{ level = 120, title = "Dark Brotherhood Listener", icon = "🗡️" }, -- Elder Scrolls
+				{ level = 135, title = "Mechanical Boss Slayer", icon = "🤖" }, -- Terraria
+				{ level = 150, title = "Butcher of Blaviken", icon = "🩸" }, -- The Witcher
+				{ level = 165, title = "King of Games", icon = "👑" }, -- Yu-Gi-Oh!
+				{ level = 180, title = "Lord of Frenzied Flame", icon = "🔥" }, -- Elden Ring
+				{ level = 200, title = "Quantum Observer", icon = "⚛️" }, -- Outer Wilds
+				{ level = 210, title = "Moon Lord Vanquisher", icon = "🦑" }, -- Terraria
+				{ level = 225, title = "Elden Lord", icon = "🟡" }, -- Elden Ring
+				{ level = 240, title = "Hardcore Legend", icon = "🖤" }, -- Minecraft
+				{ level = 250, title = "Master of the Millennium Items", icon = "👁️" }, -- Yu-Gi-Oh!
+				{ level = 260, title = "White Wolf of Rivia", icon = "🐺" }, -- The Witcher
+				{ level = 270, title = "Eye of the Universe Explorer", icon = "🌌" }, -- Outer Wilds
+				{ level = 280, title = "Nerevarine", icon = "💍" }, -- Elder Scrolls
+				{ level = 285, title = "Empress of Light Conqueror", icon = "🦋" }, -- Terraria
+				{ level = 290, title = "Zenith Forger", icon = "⚔️" }, -- Terraria
+				{ level = 295, title = "Pharaoh Nameless", icon = "🏺" }, -- Yu-Gi-Oh!
+				{ level = 300, title = "CHIM Attainer", icon = "🌀" }, -- Elder Scrolls
 			},
 			achievements = {
 				-- =========================================================================
@@ -231,8 +278,8 @@ return {
 					end,
 				},
 				{
-					id = "zenith_crafted",
-					name = "Zenith Forger",
+					id = "master_of_the_arsenal",
+					name = "Master of the Arsenal",
 					icon = "⚔️",
 					desc = "Code in 7 different programming languages",
 					check = function(stats)
