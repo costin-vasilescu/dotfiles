@@ -70,7 +70,7 @@ return {
 		},
 		opts = {
 			items = { enabled = false },
-			override_levels = false,
+			override_levels = true,
 			levels = {
 				{ level = 1, title = "Dirt Hut Architect", icon = "🌱" }, -- Minecraft
 				{ level = 5, title = "Third-Rate Duelist", icon = "🃏" }, -- Yu-Gi-Oh!
