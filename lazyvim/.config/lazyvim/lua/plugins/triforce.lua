@@ -13,48 +13,46 @@ return {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		opts = {
-			sections = {
-				lualine_x = {
-					{
-						"triforce",
-						currency = {
-							enabled = false,
-						},
-						level = {
-							enabled = true,
-							prefix = "Lv.",
-							show = {
-								level = true,
-								bar = true,
-								percent = false,
-								xp = false,
-							},
-							bar = {
-								length = 8,
-								chars = { filled = "█", empty = "░" },
-							},
-						},
-						achievements = {
-							enabled = false,
-							icon = "",
-							show_count = true,
-						},
-						streak = {
-							enabled = false,
-							icon = "",
-							show_days = true,
-						},
-						session_time = {
-							enabled = true,
-							icon = "",
-							show_duration = true,
-							format = "short",
-						},
+		opts = function(_, opts)
+			opts.sections = opts.sections or {}
+			opts.sections.lualine_x = opts.sections.lualine_x or {}
+			table.insert(opts.sections.lualine_x, {
+				"triforce",
+				currency = {
+					enabled = false,
+				},
+				level = {
+					enabled = true,
+					prefix = "Lv.",
+					show = {
+						level = true,
+						bar = true,
+						percent = false,
+						xp = false,
+					},
+					bar = {
+						length = 8,
+						chars = { filled = "Γûê", empty = "Γûæ" },
 					},
 				},
-			},
-		},
+				achievements = {
+					enabled = false,
+					icon = "",
+					show_count = true,
+				},
+				streak = {
+					enabled = false,
+					icon = "",
+					show_days = true,
+				},
+				session_time = {
+					enabled = true,
+					icon = "",
+					show_duration = true,
+					format = "short",
+				},
+			})
+		end,
 	},
 	{
 		"gisketch/triforce.nvim",
