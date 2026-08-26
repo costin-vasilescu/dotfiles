@@ -30,10 +30,7 @@ return {
 						percent = false,
 						xp = false,
 					},
-					bar = {
-						length = 8,
-						chars = { filled = "Γûê", empty = "Γûæ" },
-					},
+					bar = { length = 10, chars = { filled = "█", empty = "░" } },
 				},
 				achievements = {
 					enabled = false,
