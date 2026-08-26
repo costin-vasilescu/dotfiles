@@ -3,8 +3,8 @@ return {
 		"tamton-aquib/duck.nvim",
 		config = function()
 			-- Timing parameters (in milliseconds)
-			local INITIAL_IDLE_DELAY = 10000 -- Wait time before 1st duck (10s)
-			local FLOCK_SPAWN_INTERVAL = 2000 -- Time between extra ducks (3s)
+			local INITIAL_IDLE_DELAY = 20000 -- Wait time before 1st duck
+			local FLOCK_SPAWN_INTERVAL = 2000 -- Time between extra ducks
 			local MAX_DUCKS = 30 -- Max ducks in flock
 
 			local state_timer = vim.uv.new_timer()
