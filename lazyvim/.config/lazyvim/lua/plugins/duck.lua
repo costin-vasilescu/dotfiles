@@ -3,12 +3,13 @@ return {
 		"tamton-aquib/duck.nvim",
 		config = function()
 			-- Timing parameters (in milliseconds)
-			local INITIAL_IDLE_DELAY = 20000 -- Wait time before 1st duck
-			local FLOCK_SPAWN_INTERVAL = 2000 -- Time between extra ducks
+			local INITIAL_IDLE_DELAY = 30000 -- Wait time before 1st duck
+			local FLOCK_SPAWN_INTERVAL = 3000 -- Time between extra ducks
 			local MAX_DUCKS = 30 -- Max ducks in flock
 
 			local state_timer = vim.uv.new_timer()
 			local is_idle_active = false
+			local is_enabled = true
 			local duck_count = 0
 
 			-- Stop animation and remove all ducks
@@ -30,6 +31,10 @@ return {
 
 			-- Spawn ducks progressively up to MAX_DUCKS
 			local function spawn_duck_step()
+				if not is_enabled then
+					return
+				end
+
 				is_idle_active = true
 
 				if duck_count < MAX_DUCKS then
@@ -49,7 +54,7 @@ return {
 			local function reset_idle_timer()
 				stop_animations()
 
-				if state_timer then
+				if state_timer and is_enabled then
 					state_timer:stop()
 					state_timer:start(INITIAL_IDLE_DELAY, 0, vim.schedule_wrap(spawn_duck_step))
 				end
@@ -69,6 +74,25 @@ return {
 
 			-- Start initial countdown
 			reset_idle_timer()
+
+			-- Toggle keymap: <leader>uq ("quack") disables/enables the duck screensaver
+			Snacks.toggle({
+				name = "Duck Screensaver",
+				get = function()
+					return is_enabled
+				end,
+				set = function(state)
+					is_enabled = state
+					if state then
+						reset_idle_timer()
+					else
+						if state_timer then
+							state_timer:stop()
+						end
+						stop_animations()
+					end
+				end,
+			}):map("<leader>uq")
 		end,
 	},
 }
