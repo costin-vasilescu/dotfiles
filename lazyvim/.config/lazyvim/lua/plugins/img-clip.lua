@@ -38,8 +38,8 @@ return {
 
 				-- Set the extension that the image file will have
 				-- Also specifying the image options with the `process_cmd`
-				extension = "avif", ---@type string
-				process_cmd = "magick convert - -quality 75 avif:-", ---@type string
+				extension = "webp", ---@type string
+				process_cmd = "magick - -quality 75 webp:-", ---@type string
 				copy_images = true, ---@type boolean
 
 				-- drag and drop options
@@ -50,8 +50,14 @@ return {
 			},
 			filetypes = {
 				markdown = {
-					-- encode spaces and special characters in file path
-					url_encode_path = true, ---@type boolean
+					-- use Obsidian-style wikilink embeds instead of standard
+					-- markdown image links, to match Obsidian's "wikilinks"
+					-- link format setting
+					template = "![[$FILE_PATH]]\n$CURSOR", ---@type string
+
+					-- wikilinks don't need URL-encoded paths (Obsidian
+					-- handles spaces/special characters natively in `[[ ]]`)
+					url_encode_path = false, ---@type boolean
 				},
 			},
 		},
@@ -67,8 +73,8 @@ return {
 			-- file's extension, only falling back to the configured
 			-- `extension` option when the source has none at all. Since
 			-- `process_cmd` re-encodes the image bytes to a different format
-			-- (avif), dragging in a `.png` results in a copied file that's
-			-- actually AVIF-encoded but still named `.png`. Force the
+			-- (webp), dragging in a `.png` results in a copied file that's
+			-- actually WEBP-encoded but still named `.png`. Force the
 			-- configured extension whenever we're copying + processing.
 			do
 				local paste = require("img-clip.paste")
