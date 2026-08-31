@@ -40,6 +40,13 @@ return {
 				-- Also specifying the image options with the `process_cmd`
 				extension = "avif", ---@type string
 				process_cmd = "magick convert - -quality 75 avif:-", ---@type string
+				copy_images = true, ---@type boolean
+
+				-- drag and drop options
+				drag_and_drop = {
+					enabled = true, ---@type boolean
+					insert_mode = true, ---@type boolean
+				},
 			},
 			filetypes = {
 				markdown = {
