@@ -58,5 +58,67 @@ return {
 		keys = {
 			{ "<leader>ip", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
 		},
+		config = function(_, opts)
+			require("img-clip").setup(opts)
+			-- Extension fix (drag-and-drop / path pastes):
+			--
+			-- `paste_image_from_path` (used for drag-and-drop and `:PasteImage
+			-- <path>`) derives the output file's extension from the *source*
+			-- file's extension, only falling back to the configured
+			-- `extension` option when the source has none at all. Since
+			-- `process_cmd` re-encodes the image bytes to a different format
+			-- (avif), dragging in a `.png` results in a copied file that's
+			-- actually AVIF-encoded but still named `.png`. Force the
+			-- configured extension whenever we're copying + processing.
+			do
+				local paste = require("img-clip.paste")
+				local config = require("img-clip.config")
+				local fs = require("img-clip.fs")
+				local markup = require("img-clip.markup")
+				local original_paste_image_from_path = paste.paste_image_from_path
+
+				paste.paste_image_from_path = function(src_path)
+					if
+						config.get_opt("embed_image_as_base64")
+						or not config.get_opt("copy_images")
+						or config.get_opt("process_cmd") == ""
+					then
+						return original_paste_image_from_path(src_path)
+					end
+
+					local extension = config.get_opt("extension")
+
+					local file_path = fs.get_file_path(extension)
+					if not file_path then
+						util.error("Could not determine file path.")
+						return false
+					end
+
+					local dir_path = vim.fn.fnamemodify(file_path, ":h")
+					if not fs.mkdirp(dir_path) then
+						util.error("Could not create directories.")
+						return false
+					end
+
+					if not fs.copy_file(src_path, file_path) then
+						util.error("Could not copy image.")
+						return false
+					end
+
+					local output, exit_code = fs.process_image(file_path)
+					if exit_code ~= 0 then
+						util.warn("Could not process image.", true)
+						util.warn("Output: " .. output, true)
+					end
+
+					if not markup.insert_markup(file_path, true) then
+						util.error("Could not insert markup code.")
+						return false
+					end
+
+					return true
+				end
+			end
+		end,
 	},
 }
