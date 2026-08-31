@@ -33,7 +33,7 @@ return {
 						text = {
 							wrap = true,
 						},
-						auto_hide = true,
+						-- auto_hide = true, -- bug: prompt input does not clear after send
 					},
 				},
 			})
