@@ -1,6 +1,25 @@
 [include]
   path = ~/.gitconfig.local
+
+[init]
+	defaultBranch = master
+
 [core]
+	editor = vim
 	pager = diff-so-fancy | less --tabs=4 -RF
+
+[pull]
+	rebase = true
+
 [interactive]
 	diffFilter = diff-so-fancy --patch
+
+[alias]
+	st = status
+	cm = commit -m
+	p = push
+	pf = push --force-with-lease
+	wa = worktree add
+	wl = worktree list
+	wd = worktree remove
+	pretty = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
