@@ -1,6 +1,7 @@
 [tools]
 node = "latest"
 opencode = "latest"
+pnpm = "latest"
 rust = "latest"
 tree-sitter = "latest"
 uv = "latest"
