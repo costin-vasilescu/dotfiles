@@ -4,12 +4,12 @@ return {
 		opts = function(_, opts)
 			opts.spec = opts.spec or {}
 			table.insert(opts.spec, {
-				"<leader>o",
-				group = "opencode",
+				"<leader>a",
+				group = "ai",
 				mode = { "n", "x" },
 				icon = {
 					icon = LazyVim.config.icons.kinds.Copilot,
-					color = "purple",
+					color = "white",
 				},
 			})
 		end,
@@ -34,6 +34,13 @@ return {
 							wrap = true,
 						},
 						-- auto_hide = true, -- bug: prompt input does not clear after send
+					},
+				},
+				keymap_prefix = "<leader>a",
+				keymap = {
+					editor = {
+						["<C-,>"] = { "toggle" }, -- Open opencode. Close if opened
+						["<C-.>"] = { "open_input_new_session" }, -- Opens and focuses on input window on insert mode. Creates a new session
 					},
 				},
 			})
