@@ -1,4 +1,5 @@
 [tools]
+npm = "latest"
 opencode = "latest"
 pi = "latest"
 pnpm = "latest"
