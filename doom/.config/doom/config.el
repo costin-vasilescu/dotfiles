@@ -86,5 +86,4 @@
 
 ;; Shell configuration
 (setq shell-file-name (executable-find "bash"))
-(setq-default vterm-shell "/bin/fish")
 (setq-default explicit-shell-file-name "/bin/fish")
