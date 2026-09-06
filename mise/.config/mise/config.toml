@@ -1,7 +1,10 @@
 [tools]
-node = "latest"
 opencode = "latest"
+pi = "latest"
 pnpm = "latest"
 rust = "latest"
 tree-sitter = "latest"
 uv = "latest"
+
+[settings.npm]
+package_manager = "pnpm"
