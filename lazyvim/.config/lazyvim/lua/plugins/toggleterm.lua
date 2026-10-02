@@ -22,8 +22,7 @@ return {
 		config = function(_, opts)
 			require("toggleterm").setup(opts)
 
-			-- Make it easy to escape terminal-insert mode and move around
-			-- (window nav, tab nav, leader mappings, etc.) without typing `exit`.
+			-- Escape from terminal mode
 			vim.api.nvim_create_autocmd("TermOpen", {
 				pattern = "term://*toggleterm#*",
 				callback = function(event)
