@@ -48,13 +48,6 @@ if test -f ~/.config/fish/.env.fish
     source ~/.config/fish/.env.fish
 end
 
-# pnpm
-set -gx PNPM_HOME '/home/tibi/.local/share/pnpm'
-if not string match -q -- "$PNPM_HOME/bin" $PATH
-    set -gx PATH "$PNPM_HOME/bin" $PATH
-end
-# pnpm end
-
 # ============================================================================
 # Abbreviations
 # ============================================================================
@@ -64,8 +57,5 @@ abbr -a !! --position anywhere --function last_history_item
 # Aliases
 # ============================================================================
 alias cat='bat'
-alias vim='nvim'
 alias pip='uv pip'
 alias ghget='curl -LO'
-alias npm='pnpm'
-alias npx='pnpx'
