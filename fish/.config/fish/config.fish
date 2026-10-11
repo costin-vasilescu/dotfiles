@@ -59,3 +59,4 @@ abbr -a !! --position anywhere --function last_history_item
 alias cat='bat'
 alias pip='uv pip'
 alias ghget='curl -LO'
+alias czm='chezmoi'
